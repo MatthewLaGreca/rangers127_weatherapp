@@ -2,7 +2,7 @@ const openWeatherAPIKey = '21dc93ea709e8255e210065e20b60ef5'
 
 
 let getWeather = async (cityState) => {
-    const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityState[0]},${cityState[1]},US&appid=${openWeatherAPIKey}`, {
+    const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${cityState}&appid=${openWeatherAPIKey}`, {
         method: "POST"
 }) 
     const data = await result.json()
@@ -99,8 +99,7 @@ let showStats = async () => {
 }
 
 function grabCityState () {
-    let cityState = ['city','state']
-    cityState[0] = document.getElementById('city').innerHTML
-    cityState[1] = document.getElementById('state').value
+    let cityState = 0
+    cityState = document.getElementById('city').innerHTML
     return cityState
 }
